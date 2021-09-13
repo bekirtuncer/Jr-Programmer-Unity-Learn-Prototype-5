@@ -7,6 +7,8 @@ public class Target : MonoBehaviour
     private Rigidbody targetRb;
     private GameManager gameManager;
 
+    public ParticleSystem explosionParticle;
+
     private float minSpeed = 12;
     private float maxSpeed = 16;
     private float maxTorque = 10;
@@ -36,6 +38,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         gameManager.UpdateScore(pointValue);
     }
 
